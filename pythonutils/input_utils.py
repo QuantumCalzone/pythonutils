@@ -1,4 +1,4 @@
-from colors_utils import *
+from .colors_utils import *
 
 _verbose = False
 

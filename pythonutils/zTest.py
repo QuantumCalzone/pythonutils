@@ -1,5 +1,6 @@
-from os_utils import *
-from yes_or_no_input import *
+from .colors_utils import *
+from .os_utils import *
+from .yes_or_no_input import *
 
 
 def test_colors():

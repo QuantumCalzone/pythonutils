@@ -1,4 +1,5 @@
-from str_utils import *
+from .str_utils import *
+
 
 _verbose = False
 # regex = re.compile("[^a-zA-Z]")
@@ -30,12 +31,13 @@ def yes_or_no(prompt):
     if _verbose:
         print(f"yes_or_no ( target: {prompt} )")
 
-    input_yes_or_no = raw_input("{} y/n: ".format(prompt))
+    input_yes_or_no = input("{} y/n: ".format(prompt))
 
-    while not yes_or_no_validation(input_yes_or_no):
-        input_yes_or_no = raw_input("y/n: ")
+    while not _yes_or_no_validation(input_yes_or_no):
+        input_yes_or_no = input("y/n: ")
 
-    input_yes_or_no = strip_non_letters(input_yes_or_no)
+    input_yes_or_no = regexManager.get("").sub(input_yes_or_no, "not_letters_pat")
+    input_yes_or_no = input_yes_or_no.lower()
 
     if input_yes_or_no[0] == 'y':
         return True
