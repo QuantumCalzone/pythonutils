@@ -1,5 +1,5 @@
+from .colors_utils import *
 from .str_utils import *
-
 
 _verbose = False
 # regex = re.compile("[^a-zA-Z]")
@@ -31,18 +31,18 @@ def yes_or_no(prompt):
     if _verbose:
         print(f"yes_or_no ( target: {prompt} )")
 
-    input_yes_or_no = input("{} y/n: ".format(prompt))
+    input_yes_or_no = input("{} y/n: ".format(get_green(prompt)))
 
     while not _yes_or_no_validation(input_yes_or_no):
-        input_yes_or_no = input("y/n: ")
+        input_yes_or_no = input(get_green("y/n: "))
 
-    input_yes_or_no = regexManager.get("").sub(input_yes_or_no, "not_letters_pat")
+    input_yes_or_no = regexManager.get(not_letters_pat).sub(input_yes_or_no, "")
     input_yes_or_no = input_yes_or_no.lower()
 
-    if input_yes_or_no[0] == 'y':
+    if input_yes_or_no[0] == "y":
         return True
 
-    if input_yes_or_no[0] == 'n':
+    if input_yes_or_no[0] == "n":
         return False
 
     print("Not sure how you reached this point. Your input was: {}".format(input_yes_or_no))
