@@ -118,4 +118,3 @@ def get_bright_white(val):
     if _verbose:
         print(f"get_bright_white( val: {val} )")
     return _get_colored(val, _bright_white)
-

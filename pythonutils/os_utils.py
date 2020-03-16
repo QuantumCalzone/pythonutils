@@ -60,3 +60,9 @@ def get_all_files_in_dir_sorted_by_size(target_dir, recursive=False):
     get_all_files_in_dir_sorted_by_size_results.sort(key=lambda x: x[1])
 
     return get_all_files_in_dir_sorted_by_size_results
+
+
+def get_desktop_dir_path():
+    if _verbose:
+        print("get_desktop_dir_path")
+    return os.path.expanduser("~/Desktop/")
