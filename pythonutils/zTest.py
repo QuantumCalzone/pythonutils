@@ -46,7 +46,8 @@ def test_get_all_files_in_dir_sorted_by_size():
         print("{}: {}".format(path_and_size[0], byte_size_to_human_size(path_and_size[1])))
 
 
-test_colors()
-test_get_all_names_in_dir()
-test_get_all_in_dir()
-test_get_all_files_in_dir_sorted_by_size()
+# test_colors()
+# test_get_all_names_in_dir()
+# test_get_all_in_dir()
+# test_get_all_files_in_dir_sorted_by_size()
+yes_or_no_test = yes_or_no("Will this be true?")

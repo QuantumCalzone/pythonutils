@@ -2,16 +2,16 @@ import re
 
 
 class RegexManager:
-    _regexes = {}
+    _regex_patterns = {}
 
-    def get(self, pattern):
+    def get_pattern(self, pattern_id):
         if _verbose:
-            print(f"get ( pattern: {pattern} )")
+            print(f"get_pattern ( pattern_id: {pattern_id} )")
 
-        if pattern not in self._regexes:
-            self._regexes[pattern] = re.compile(pattern)
+        if pattern_id not in self._regex_patterns:
+            self._regex_patterns[pattern_id] = re.compile(pattern_id)
 
-        return self._regexes[pattern]
+        return self._regex_patterns[pattern_id]
 
 
 # def byte_size_to_human_size(byte_size, suffix="B"):
@@ -42,10 +42,9 @@ def byte_size_to_human_size(byte_size, do_round=True):
     return (round(byte_size) if do_round else byte_size), power_labels[n] + "bytes"
 
 
-
 _verbose = False
-regexManager = RegexManager()
-before_first_comma_pat= r"^([^,])+"
+regex_manager = RegexManager()
+before_first_comma_pat = r"^([^,])+"
 after_first_comma_and_space_pat = r"(?<=\, ).*"
 only_numbers_pat = r"[^a-z ]\ *([.0-9])*\d"
 not_letters_pat = r"[^a-zA-Z]"

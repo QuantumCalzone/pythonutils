@@ -11,7 +11,7 @@ def _yes_or_no_validation(target):
         print(f"_yes_or_no_validation ( target: {target} )")
 
     # remove non-letters
-    target = regexManager.get(not_letters_pat).sub("", target)
+    target = regex_manager.get_pattern(not_letters_pat).sub("", target)
 
     if len(target) <= 0:
         print(_fail_log)
@@ -36,7 +36,7 @@ def yes_or_no(prompt):
     while not _yes_or_no_validation(input_yes_or_no):
         input_yes_or_no = input(get_green("y/n: "))
 
-    input_yes_or_no = regexManager.get(not_letters_pat).sub(input_yes_or_no, "")
+    input_yes_or_no = re.sub(regex_manager.get_pattern(not_letters_pat), "", input_yes_or_no)
     input_yes_or_no = input_yes_or_no.lower()
 
     if input_yes_or_no[0] == "y":
