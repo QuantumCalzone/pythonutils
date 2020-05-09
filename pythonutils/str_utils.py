@@ -50,3 +50,10 @@ only_numbers_pat = r"[^a-z ]\ *([.0-9])*\d"
 not_letters_pat = r"[^a-zA-Z]"
 number_groups_pat = r"[0-9]+"
 email_validator_pat = r"/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi"
+
+
+def num_to_comma_str(num):
+    if _verbose:
+        print(f"num_to_comma_str ( num: {num} )")
+
+    return "{:,}".format(num)

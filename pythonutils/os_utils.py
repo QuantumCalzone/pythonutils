@@ -75,3 +75,43 @@ def ensure_file_path_exists(file_path):
     if not os.path.exists(file_path):
         with open(file_path, "w"):
             pass
+
+
+def get_file_name_from_path(path, with_extension=False):
+    if _verbose:
+        print(f"extract_file_name_from_path ( path: {path} , with_extension: {with_extension} )")
+
+    return os.path.basename(path) if with_extension else os.path.splitext(os.path.basename(path))[0]
+
+
+def get_parent_dir(target_path, amount=1):
+    debug = f"get_parent_dir ( target_file: {target_path} , amount: {amount} )"
+    if _verbose:
+        print(debug)
+
+    if amount < 0:
+        print(f"{debug} | amount can't be less than zero, setting it to 1")
+        amount = 1
+
+    parent_dir = "Not found"
+
+    i = 0
+    while i < amount:
+        i += 1
+        target_path = os.path.join(target_path, os.pardir)
+        parent_dir = os.path.abspath(target_path)
+
+    return parent_dir
+
+
+def ensure_dir_path_exists(path):
+    if _verbose:
+        print(f"ensure_dir_path_exists ( path: {path} )")
+
+    if os.path.isfile(path):
+        path = os.path.dirname(path)
+
+    if not os.path.exists(path):
+        os.makedirs(path)
+        if _verbose:
+            print(f"ensure_dir_path_exists ( path: {path} ) | created dir path since it did not exist!")
