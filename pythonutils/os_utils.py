@@ -66,3 +66,12 @@ def get_desktop_dir_path():
     if _verbose:
         print("get_desktop_dir_path")
     return os.path.expanduser("~/Desktop/")
+
+
+def ensure_file_path_exists(file_path):
+    if _verbose:
+        print(f"ensure_file_path_exists ( file_path: {file_path} )")
+
+    if not os.path.exists(file_path):
+        with open(file_path, "w"):
+            pass

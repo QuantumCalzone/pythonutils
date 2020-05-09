@@ -50,4 +50,5 @@ def test_get_all_files_in_dir_sorted_by_size():
 # test_get_all_names_in_dir()
 # test_get_all_in_dir()
 # test_get_all_files_in_dir_sorted_by_size()
-yes_or_no_test = yes_or_no("Will this be true?")
+# yes_or_no_test = yes_or_no("Will this be true?")
+ensure_file_path_exists("/Users/georgekatsaros/Desktop/it_works.txt")
