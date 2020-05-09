@@ -23,14 +23,14 @@ def test_colors():
 
 
 def test_get_all_names_in_dir():
-    all_names_in_dir = get_all_names_in_dir("/Users/georgekatsaros/Desktop")
+    all_names_in_dir = get_all_names_in_dir(get_desktop_dir_path())
     print("\n--Results!--\n")
     for name_in_dir in all_names_in_dir:
         print(name_in_dir)
 
 
 def test_get_all_in_dir():
-    all_in_dir = get_all_in_dir("/Users/georgekatsaros/Desktop")
+    all_in_dir = get_all_in_dir(get_desktop_dir_path())
     print("\n--Results!--\n")
     for in_dir in all_in_dir:
         print(in_dir)
@@ -46,4 +46,7 @@ def test_get_all_files_in_dir_sorted_by_size():
         print("{}: {}".format(path_and_size[0], byte_size_to_human_size(path_and_size[1])))
 
 
+test_colors()
+test_get_all_names_in_dir()
+test_get_all_in_dir()
 test_get_all_files_in_dir_sorted_by_size()
