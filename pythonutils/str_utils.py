@@ -1,4 +1,5 @@
 import re
+from unidecode import unidecode
 
 
 class RegexManager:
@@ -57,3 +58,10 @@ def num_to_comma_str(num):
         print(f"num_to_comma_str ( num: {num} )")
 
     return "{:,}".format(num)
+
+
+def strip_non_ascii(text):
+    if type(text) is not str:
+        return unidecode(str(text, encoding="utf-8"))
+    else:
+        return text
