@@ -17,7 +17,7 @@ def has_hidden_attribute(path):
         print(f"has_hidden_attribute ( path: {path} )")
 
     try:
-        attrs = ctypes.windll.kernel32.GetFileAttributesW(unicode(path))
+        attrs = ctypes.windll.kernel32.GetFileAttributesW(path.encode("utf-8"))
         assert attrs != -1
         result = bool(attrs & 2)
     except (AttributeError, AssertionError):
