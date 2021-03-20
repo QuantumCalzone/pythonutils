@@ -18,6 +18,39 @@ _bright_cyan = "\033[96m"
 _bright_white = "\033[97m"
 
 
+def convert_hex_to_rgb(hex_color):
+    if _verbose:
+        print(f"convert_hex_to_rgb ( hex_color: {hex_color} )")
+
+    hex_color = hex_color.lstrip("#")
+    rgb = tuple(int(hex_color[i:i + 2], 16) for i in (0, 2, 4))
+    return rgb
+
+
+def convert_rgb_to_hex(rgb_color):
+    if _verbose:
+        print(f"convert_rgb_to_hex ( rgb_color: {rgb_color} )")
+
+    hex_color = "#%02x%02x%02x" % (rgb_color[0], rgb_color[1], rgb_color[2])
+    return hex_color
+
+
+def adjust_color(color, amount):
+    if _verbose:
+        print(f"adjust_color ( color: {color} , amount: {amount} )")
+
+    convert_back_to_hex = type(color) is str
+    if convert_back_to_hex:
+        color = convert_hex_to_rgb(color)
+
+    color = color[0] + amount, color[1] + amount, color[2] + amount
+
+    if convert_back_to_hex:
+        color = convert_rgb_to_hex(color)
+
+    return color
+
+
 def _get_colored(val, color):
     if _verbose:
         print(f"_get_colored ( val: {val} , color: {color} )")
