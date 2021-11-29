@@ -11,10 +11,19 @@ def get_all_names_in_dir(target_dir):
     return os.listdir(target_dir)
 
 
-def get_all_in_dir(target_dir, full_path=True, recursive=False, include_dirs=True, include_files=True):
+def get_all_in_dir(target_dir, full_path=True, recursive=False, include_dirs=True, include_files=True,
+                   must_end_in=None, include_hidden=False):
     if _verbose:
         print(f"get_all_paths_in_dir ( target_dir: {target_dir} , full_path: {full_path} , "
-              f"recursive: {recursive}, include_dirs: {include_dirs} , include_files: {include_files} )")
+              f"recursive: {recursive}, include_dirs: {include_dirs} , include_files: {include_files} , "
+              f"must_end_in: {must_end_in} , include_hidden: {include_hidden} )")
+
+    def can_get_in_dir(target_path):
+        if must_end_in is not "" and must_end_in is not None:
+            print("target_path: {} | {}".format(target_path, target_path.endswith(must_end_in)))
+            return target_path.endswith(must_end_in)
+        else:
+            return True
 
     if not include_dirs and not include_files:
         raise Exception("What are you looking for with include_dirs and include_files set to false?!")
@@ -41,6 +50,19 @@ def get_all_in_dir(target_dir, full_path=True, recursive=False, include_dirs=Tru
 
         if not recursive:
             break
+
+    if must_end_in is not "" and must_end_in is not None:
+        get_all_paths_in_dir_result_replacement = []
+        for result in get_all_paths_in_dir_result:
+            if result.endswith(must_end_in):
+                get_all_paths_in_dir_result_replacement.append(result)
+        get_all_paths_in_dir_result = get_all_paths_in_dir_result_replacement
+
+    if include_hidden is False:
+        get_all_paths_in_dir_result_replacement = []
+        for result in get_all_paths_in_dir_result:
+            if not is_hidden(result):
+                get_all_paths_in_dir_result_replacement.append(result)
 
     return get_all_paths_in_dir_result
 
