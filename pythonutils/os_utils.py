@@ -1,5 +1,5 @@
 import datetime
-from hidden_utils import *
+from .hidden_utils import *
 import os
 
 _verbose = False
@@ -20,7 +20,7 @@ def get_all_in_dir(target_dir, full_path=True, recursive=False, include_dirs=Tru
               f"must_end_in: {must_end_in} , include_hidden: {include_hidden} )")
 
     def can_get_in_dir(target_path):
-        if must_end_in is not "" and must_end_in is not None:
+        if must_end_in is not None and must_end_in is not None:
             print("target_path: {} | {}".format(target_path, target_path.endswith(must_end_in)))
             return target_path.endswith(must_end_in)
         else:
@@ -52,7 +52,7 @@ def get_all_in_dir(target_dir, full_path=True, recursive=False, include_dirs=Tru
         if not recursive:
             break
 
-    if must_end_in is not "" and must_end_in is not None:
+    if must_end_in is not None and must_end_in is not None:
         get_all_paths_in_dir_result_replacement = []
         for result in get_all_paths_in_dir_result:
             if result.endswith(must_end_in):
