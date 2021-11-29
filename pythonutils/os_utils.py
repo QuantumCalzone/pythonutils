@@ -1,6 +1,6 @@
 import os
 
-_verbose = True
+_verbose = False
 
 
 def get_all_names_in_dir(target_dir):
