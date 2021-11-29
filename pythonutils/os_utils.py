@@ -115,3 +115,14 @@ def ensure_dir_path_exists(path):
         os.makedirs(path)
         if _verbose:
             print(f"ensure_dir_path_exists ( path: {path} ) | created dir path since it did not exist!")
+
+
+def make_unique_time_folder_at_path(path):
+    if _verbose:
+        print("make_unique_time_folder_at_path ( path: {} )".format(path))
+        print(str(datetime.datetime.now()))
+
+    new_path = os.path.join(path, str(datetime.datetime.now()))
+    ensure_dir_path_exists(new_path)
+
+    return new_path
